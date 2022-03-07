@@ -24,8 +24,8 @@ pip install spleeter
 # separate the example audio into two components
 spleeter separate -p spleeter:4stems -o output -i test.mp3 # command指令
 # test.mp3文件需要根据实际情况修改文件名，该文件在主目录sound_separation
-# output：输出文件当前路径下的子目录；也可以为绝对路径
-# test.mp3 也可以是绝对路径下的音频文件
+# -o output：输出路径output为当前路径下的子目录；也可以为绝对路径
+# -i test.mp3：也可以是绝对路径下的音频文件
 
  或者执行.py代码，代码如下：
  import os
