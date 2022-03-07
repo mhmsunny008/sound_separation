@@ -7,7 +7,7 @@ video = VideoFileClip('test1.mp4')
 audio = video.audio
 audio.write_audiofile('test1.mp3')
 
-2. 语音中分离人声：
+2. 音频中分离人声：
 
 （1）文件目录：
 \sound_separation\output
@@ -20,11 +20,17 @@ conda install -c conda-forge ffmpeg libsndfile
 # install spleeter with pip
 pip install spleeter
 
-（3）安装好依赖项之后，切换到/sound_separation目录，执行以下指令：
+（3）安装好依赖项之后，在命令行模式下，切换到/sound_separation目录，执行以下指令：
 # separate the example audio into two components
-spleeter separate -p spleeter:4stems -o output -i test.mp3 # test.mp3文件需要根据实际情况修改文件名，该文件在主目录sound_separation
-                                                                                               # output：输出路径
-                                                                                               # test.mp3 也可以是绝对路径下的音频文件
+spleeter separate -p spleeter:4stems -o output -i test.mp3 # command指令
+# test.mp3文件需要根据实际情况修改文件名，该文件在主目录sound_separation
+# output：输出文件当前路径下的子目录；也可以为绝对路径
+# test.mp3 也可以是绝对路径下的音频文件
+
+ 或者执行.py代码，代码如下：
+ import os
+ command = 'spleeter separate -p spleeter:4stems -o output -i test.mp3'
+ os.system(command)
 
 （4）如果出现加载模型有误，很有可能是没有下载spleeter的2stems/4stems预训练模型，
 因此需要从网上搜索"4stems.tar.gz"或者“2stems.tar.gz”并下载预训练模型，
