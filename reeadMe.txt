@@ -1,18 +1,32 @@
-文件目录：
+1. 视频中提取语音参考https://zhuanlan.zhihu.com/p/260374152
+（1）安装依赖项：pip install moviepy
+（2）python实现代码：
+
+from moviepy.editor import *
+video = VideoFileClip('test1.mp4')
+audio = video.audio
+audio.write_audiofile('test1.mp3')
+
+2. 语音中提取人声：
+
+（1）文件目录：
 \sound_separation\output
 \sound_separation\pretrained_models\2stems   (2stems预训练模型)
 \sound_separation\pretrained_models\4stems   (4stems预训练模型)
 
-（1）安装依赖项参考https://github.com/deezer/spleeter，具体操作如下：
+（2）安装依赖项参考https://github.com/deezer/spleeter，具体操作如下：
 # install dependencies using conda
 conda install -c conda-forge ffmpeg libsndfile
 # install spleeter with pip
 pip install spleeter
 
-（2）安装好依赖项之后，切换到/sound_separation目录，执行以下指令：
+（3）安装好依赖项之后，切换到/sound_separation目录，执行以下指令：
 # separate the example audio into two components
-spleeter separate -p spleeter:2stems -o output audio_example.mp3 # audio_example.mp3文件需要根据实际情况修改文件名，该文件在主目录sound_separation
-（3）如果出现加载模型有误，很有可能是没有下载spleeter的2stems/4stems预训练模型，
+spleeter separate -p spleeter:4stems -o output -i test.mp3 # test.mp3文件需要根据实际情况修改文件名，该文件在主目录sound_separation
+                                                                                               # output：输出路径
+                                                                                               # test.mp3 也可以是绝对路径下的音频文件
+
+（4）如果出现加载模型有误，很有可能是没有下载spleeter的2stems/4stems预训练模型，
 因此需要从网上搜索"4stems.tar.gz"或者“2stems.tar.gz”并下载预训练模型，
 解压之后，放在对应的/pretrained_models/2stems或者/pretrained_models/4stems目录下，即可解决问题。
 该问题的debug参考https://github.com/deezer/spleeter/issues/306
@@ -21,6 +35,6 @@ spleeter separate -p spleeter:2stems -o output audio_example.mp3 # audio_example
 ②4stems预训练模型下载地址https://github.com/deezer/spleeter/releases/download/v1.4.0/4stems.tar.gz
 
 
-（4）运行时，需要把代理关闭“网络和internet->代理->使用代理服务器->关闭”，否则有可能会pip的相关指令运行失败，
+（5）运行时，需要把代理关闭“网络和internet->代理->使用代理服务器->关闭”，否则有可能会pip的相关指令运行失败，
 甚至导致整个程序运行失败。
 
