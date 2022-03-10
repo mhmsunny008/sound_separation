@@ -44,3 +44,6 @@ spleeter separate -p spleeter:4stems -o output -i test.mp3 # command指令
 （5）运行时，需要把代理关闭“网络和internet->代理->使用代理服务器->关闭”，否则有可能会pip的相关指令运行失败，
 甚至导致整个程序运行失败。
 
+
+3. 从人声音频中，去除“无声”阶段，最后得到完整的人声。参考https://kuhungio.me/2020/audio_progress/
+
