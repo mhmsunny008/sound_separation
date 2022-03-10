@@ -45,5 +45,3 @@ spleeter separate -p spleeter:4stems -o output -i test.mp3 # command指令
 甚至导致整个程序运行失败。
 
 
-3. 从人声音频中，去除“无声”阶段，最后得到完整的人声。参考https://kuhungio.me/2020/audio_progress/
-
